@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  int num, sum,opc;
+  float promedio;
+  
+  cout<<"1. Numero primo\n";
+  cout<<"2. factorial\n";
+  cout<<"3. Promedio\n";
+  cout<<"4. Salir\n";
+  cin>>opc;
+  
+  switch(opc)
+  {
+  case 1:
+    sum=0;
+    cout<<"Ingrese un numero ";
+    cin>>num;
+    for (int i=1;i<=num;i++)
+        if(num%i==0)
+            sum++;
+    if(sum==2)
+        cout<<"Es primo ";
+    else
+        cout<<"No es primo ";
+    break;
+    
+  case 2:
+    sum=1;
+    cout<<"Ingrese un numero";
+    cin>>num;
+    for(int i=1;i<=num;i++)
+        sum*=i;
+    cout<<"Su factorial es: "<<sum;
+  break;
+  
+  case 3:
+    sum=0;
+    cout<<"Cuantas calificaciones se ingresaran? ";
+    cin>>num;
+    for(int i=1;i<=num;i++)
+    {
+        cin>>opc;
+        if(opc<0)
+            break;
+        else
+            sum+=opc;
+    }
+    promedio=sum/num;
+    cout<<"El promedio es: "<<promedio;
+    break;
+    
+  case 4:
+    break;
+    
+  }
+    
+  return 0;
+}
