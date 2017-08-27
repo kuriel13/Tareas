@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    
+  int s1,s2,h1,h2,m1,m2;
+  
+  cout<<"Hora de entrada. Ingrese hora,minuto y segundo por separado \n";
+  cout<<"Hora: ";
+  cin>>h1;
+  cout<<"Minuto: ";
+  cin>>m1;
+  cout<<"Segundo: ";
+  cin>>s1;
+  
+  cout<<"Hora de salida. Ingrese hora,minuto y segundo por separado \n";
+  cout<<"Hora: ";
+  cin>>h2;
+  cout<<"Minuto: ";
+  cin>>m2;
+  cout<<"Segundo: ";
+  cin>>s2;
+  
+  s2-=s1;
+  if(s2<0)
+  {
+    m2-=1;
+    s2+=60;
+  }
+    
+  m2-=m1;
+  if(m2<0)
+  {
+    h2-=1;
+    m2+=60;
+  }
+    
+  h2-=h1;
+  
+  cout<<"Se trabajó "<<h2<<":"<<m2<<":"<<s2;
+  return 0;
+}
