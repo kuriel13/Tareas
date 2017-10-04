@@ -1,0 +1,90 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+using namespace std;
+
+float cos(float x, float n);
+float log(float x, float n);
+float sen(float x, float n);
+
+int main()
+{
+    float x,  n,r ;
+    int opc;
+    
+    do
+    {
+        cout<<" 1.Cos  2.Log  3.Sen  4.Salir";
+        cin>>opc;
+        cout<<"Ingrese x: ";
+        cin>>x;
+        cout<<"Ingrese el numero de terminos: ";
+        cin>>n;
+        switch(opc)
+        {
+            case 1:
+                r=cos(x,n);
+                cout<<"Resultado: "<<r<<"\n";
+            break;
+            
+            case 2:
+                r=log(x,n);
+                cout<<"Resultado: "<<r<<"\n";
+            break;
+            
+            case 3:
+                r=log(x,n);
+                cout<<"Resultado: "<<r<<"\n";
+            break;
+        }
+        
+    }while(opc!=4);
+    return 0;
+}
+
+int factorial(int num)
+{
+    for(int i=num-1;i>=1;i--)
+        num*=i;
+    return num;
+}
+
+float cos(float x, float n)
+{
+    float s=1;
+    for(int i=2;i<=n;i++)
+    {
+        if(i%2==0)
+            s-=pow(x,(i*2))/factorial(i*2);
+        else
+            s+=pow(x,(i*2))/factorial(i*2);
+    }
+    return s;
+}
+
+float log (float x, float n)
+{
+    int l;
+    float s=0;
+    x=(x-1)/x;
+    l=x;
+    for(int i=1;i<=n;i++)
+    {
+        s+=(1/i)*x;
+        x*=l;
+    }
+    return s;
+}
+
+float sen (float x, float n)
+{
+    float c=3,s=x;
+    for(int i=2;i<=n;i++)
+    {
+        if(i%2==0)
+            s-=pow(x,c)/factorial(c);
+        else
+            s+=pow(x,c)/factorial(c);
+    }
+    return s;
+}
