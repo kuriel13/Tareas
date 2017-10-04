@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+void coladera (bool v[], int tam);
+void mostrar (bool v[], int tam);
+
+int main()
+{
+    bool vec[1001];
+    int opc, tam=1000;
+
+    for(int i=1;i<=1000;i++)
+        vec[i]=1;
+
+    do{
+        cout<<"1. Hacer proceso\n";
+        cout<<"2. Mostrar\n";
+        cout<<"3. Salir\n";
+
+        cin>>opc;
+
+        switch(opc)
+        {
+            case 1:
+                coladera(vec,tam);
+                cout<<"Listo!\n";
+            break;
+
+            case 2:
+                mostrar(vec, tam);
+            break;
+        }
+    }while(opc!=3);
+
+    return 0;
+}
+
+void coladera(bool v[], int tam)
+{
+    for(int i=2;i<=tam/2;i++)
+    {
+                    cout<<"----------\n";
+        for(int j=i+i;j<=tam;j+=i)
+        {
+            cout<<j<<"\n";
+            v[j]=0;
+        }
+    }
+}
+
+void mostrar(bool v[], int tam)
+{
+    for(int i=1;i<=tam;i++)
+        if(v[i]==1)
+            cout<<i<<"\n";
+}
+
+
