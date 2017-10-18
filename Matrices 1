@@ -1,0 +1,131 @@
+#include <iostream>
+
+using namespace std;
+
+void menu();
+void llenar (int m[][5], int tam);
+void mostrar (int m[][5], int tam);
+void llenarColumnas (int m[][5], int tam);
+void diagonalP (int m[][5],int tam);
+void diagonalS (int m[][5], int tam);
+void numerosADP (int m[][5], int tam);
+int main()
+{
+    int m[5][5], tam=5, opc;
+    bool s=0;
+    do
+    {
+        menu();
+        cin>>opc;
+
+        if(opc==1)
+        {
+            llenar(m, tam);
+            cout<<"Matriz llenada\n";
+            cout<<"----------\n";
+        }
+        else if(opc==2)
+        {
+            mostrar(m, tam);
+        cout<<"----------\n";
+        }
+        else if(opc==3)
+        {
+            llenarColumnas(m, tam);
+            cout<<"Matriz llenada\n";
+            cout<<"----------\n";
+        }
+        else if(opc==4)
+        {
+            diagonalP(m, tam);
+            cout<<"----------\n";
+        }
+        else if(opc==5)
+        {
+            diagonalS(m, tam);
+            cout<<"----------\n";
+        }
+        else if(opc==6)
+        {
+            numerosADP(m, tam);
+            cout<<"----------\n";
+        }
+        else
+            s=1;
+    }while(s!=1);
+    return 0;
+}
+
+void menu ()
+{
+    cout<<"1. Llenar\n";
+    cout<<"2. Mostrar\n";
+    cout<<"3. Lenar por columna\n";
+    cout<<"4. Diagonal principal\n";
+    cout<<"5. Diagonal secundaria\n";
+    cout<<"6. Valoers debajos de la diagonal principal\n";
+    cout<<": ";
+}
+
+void llenar (int m[][5], int tam)
+{
+    int v=1;
+    for(int r=0;r<tam;r++)
+        for(int c=0;c<5;c++)
+    {
+        m[r][c]=v;
+        v++;
+    }
+}
+void mostrar (int m[][5], int tam)
+{
+    for(int r=0;r<tam;r++)
+    {
+        for(int c=0;c<5;c++)
+        {
+            cout<<m[r][c];
+            cout<<"-";
+        }
+        cout<<"\n";
+    }
+}
+void llenarColumnas (int m[][5], int tam)
+{
+    int v=1;
+    for(int c=0;c<5;c++)
+        for(int r=0;r<tam;r++)
+    {
+        m[r][c]=v;
+        v++;
+    }
+}
+void diagonalP (int m[][5],int tam)
+{
+    int c=0;
+    for(int r=0;r<tam;r++)
+    {
+        cout<<m[r][c]<<"\n";
+        c++;
+    }
+}
+void diagonalS (int m[][5],int tam)
+{
+    int c=4;
+    for(int r=0;r<tam;r++)
+    {
+        cout<<m[r][c]<<"\n";
+        c--;
+    }
+}
+void numerosADP (int m[][5],int tam)
+{
+    int i=1;
+    for(int r=1;i<tam;r++)
+    {
+        for(int c=0;c<i;c++)
+            cout<<m[r][c]<<"\n";
+        i++;
+    }
+}
+
+
