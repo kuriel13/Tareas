@@ -8,7 +8,9 @@ void mostrar (int m[][5], int tam);
 void llenarColumnas (int m[][5], int tam);
 void diagonalP (int m[][5],int tam);
 void diagonalS (int m[][5], int tam);
-void numerosADP (int m[][5], int tam);
+void numerosIDP (int m[][5], int tam);
+void numerosSDP (int m[][5], int tam);
+void vueltaDP (int m[][5], int tam);
 int main()
 {
     int m[5][5], tam=5, opc;
@@ -47,7 +49,18 @@ int main()
         }
         else if(opc==6)
         {
-            numerosADP(m, tam);
+            numerosIDP(m, tam);
+            cout<<"----------\n";
+        }
+        else if(opc==7)
+        {
+            numerosSDP(m, tam);
+            cout<<"---------\n";
+        }
+        else if(opc==8)
+        {
+            vueltaDP(m, tam);
+            cout<<"Matriz volteada";
             cout<<"----------\n";
         }
         else
@@ -64,6 +77,8 @@ void menu ()
     cout<<"4. Diagonal principal\n";
     cout<<"5. Diagonal secundaria\n";
     cout<<"6. Valoers debajos de la diagonal principal\n";
+    cout<<"7. Valores arriba de la diagonal principal\n";
+    cout<<"8. Intercambiar valores de la diagonal principal";
     cout<<": ";
 }
 
@@ -117,7 +132,7 @@ void diagonalS (int m[][5],int tam)
         c--;
     }
 }
-void numerosADP (int m[][5],int tam)
+void numerosIDP (int m[][5],int tam)
 {
     int i=1;
     for(int r=1;i<tam;r++)
@@ -127,5 +142,27 @@ void numerosADP (int m[][5],int tam)
         i++;
     }
 }
-
-
+void numerosSDP (int m[][5],int tam)
+{
+    int i=0;
+    for(int c=0;c<5;c++)
+    {
+        for(int r=0;r<i;r++)
+            cout<<m[r][c]<<"\n";
+        i++;
+    }
+}
+void vueltaDP (int m[][5], int tam)
+{
+    int i=1, x;
+    for(int r=1;i<tam;r++)
+    {
+        for(int c=0;c<i;c++)
+        {
+            x=m[r][c];
+            m[r][c]=m[c][r];
+            m[c][r]=x;
+        }
+        i++;
+    }
+}
