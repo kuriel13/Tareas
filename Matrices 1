@@ -11,6 +11,7 @@ void diagonalS (int m[][5], int tam);
 void numerosIDP (int m[][5], int tam);
 void numerosSDP (int m[][5], int tam);
 void vueltaDP (int m[][5], int tam);
+void vueltaDS (int m[][5], int tam);
 int main()
 {
     int m[5][5], tam=5, opc;
@@ -60,6 +61,12 @@ int main()
         else if(opc==8)
         {
             vueltaDP(m, tam);
+            cout<<"Matriz volteada";
+            cout<<"----------\n";
+        }
+        else if(opc==9)
+        {
+            vueltaDS(m, tam);
             cout<<"Matriz volteada";
             cout<<"----------\n";
         }
@@ -164,5 +171,19 @@ void vueltaDP (int m[][5], int tam)
             m[c][r]=x;
         }
         i++;
+    }
+}
+void vueltaDS (int m[][5], int tam)
+{
+    int i=4, x;
+    for(int r=0;r<tam;r++)
+    {
+        for(int c=0;c<i;c++)
+        {
+            x=m[r][c];
+            m[r][c]=m[4-c][4-r];
+            m[4-c][4-r]=x;
+        }
+        i--;
     }
 }
