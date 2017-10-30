@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include<time.h>
+#include<stdlib.h>
+using namespace std;
+
+int dado();
+
+int main()
+{
+    int v[101]={0}, s=0,d;
+    //Escaleras
+    v[3]=21;
+    v[29]=40;
+    v[39]=18;
+    v[65]=10;
+    v[78]=21;
+    //Serpientes
+    v[12]=-4;
+    v[46]=-19;
+    v[68]=-21;
+    v[92]=-19;
+    v[98]=-35;
+    srand(time(NULL));
+    
+    cout<<"Inicia el juego\n";
+    do{
+        d=dado();
+        s+=d;
+        cout<<"Dado: "<<d<<". Nueva posicion: "<<s<<"\n";
+        if(v[s]<0)
+        {
+            s+=v[s];
+            cout<<"Caiste en una serpiente. Nueva posicion: "<<s<<"\n";
+        }
+        else if(v[s]>0)
+        {
+            s+=v[s];
+            cout<<"Caiste en una Escalera. Nueva posicion: "<<s<<"\n";
+        }
+    }while(s<100);
+    cout<<"Haz ganado!";
+    return 0;
+}
+
+int dado()
+{
+    int num=1+rand()%(7);
+    return num;
+}
