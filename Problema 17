@@ -2,9 +2,12 @@
 #include <string>
 using namespace std;
 
+void sumar (int m[][5],int tam);
+void mostrar (int m[][5], int tam);
+
 int main()
 {
-    int m[6][5]={0}, s=0, r, c, cantidad;
+    int m[6][5]={0}, r, c, cantidad, tam=6;
     bool x=0;
     
     do{
@@ -13,28 +16,48 @@ int main()
         cin>>r;
         cout<<"Ingrese la cantidad vendida\n";
         cin>>cantidad;
-        m[r-1][c-1]=cantidad;
+        m[r-1][c-1]+=cantidad;
         cout<<"Hay mas ventas?(no=0 si=1)\n";
         cin>>x;
     }while(x==1);
-    
-    for(int r=0;r<5;r++)
+    sumar(m, tam);
+    mostrar(m, tam);
+}
+
+void sumar (int m[][5],int tam)
+{
+    int s=0;
+    for(int r=0;r<tam-1;r++)
+    {
+        for(int c=0;c<4;c++)
+            s+=m[r][c];
+        m[r][5]=s;
+        s=0;
+    }
+    for(int c=0;c<4;c++)
+    {
+        for(int r=0;r<tam-1;r++)
+            s+=m[r][c];
+        m[4][c]    
+        s=0;
+    }
+}
+void mostrar (int m[][5], int tam)
+{
+    int s=0;
+    for(int r=0;r<tam-1;r++)
     {
         for(int c=0;c<4;c++)
         {
             cout<<m[r][c];
             cout<<"-";
-            s+=m[r][c];
         }
         cout<<s;
-        s=0;
         cout<<"\n";
     }
     for(int c=0;c<4;c++)
     {
-        for(int r=0;r<5;r++)
-            s+=m[r][c];
+        for(int r=0;r<tam-1;r++)
         cout<<s<<"-";
-        s=0;
     }
 }
