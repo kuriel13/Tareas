@@ -13,13 +13,12 @@ void mostrarFA (int frec[][70],char cod[], int n);
 void mostrarFR (int frec[][70],char cod[], int n);
 void mostrarFAR (int frec[][70],char cod[], int n);
 void mostrarMo (int frec[][70], char cod[], int n);
+void guardarF (int frec[][70]);
 
 int main() {
 	
-	char ward[361][70], codif[18];
+	char mat[361][70], codif[18];
 	int tam=361, frecuencia[18][70]={0},p,n;
-
-	ifstream archi("c:\\datos\\pi3.txt",ios::in);
 	
 	codif[0]='a';
 	codif[1]='b';
@@ -40,8 +39,8 @@ int main() {
 	codif[16]='8';
 	codif[17]='9';
 	
-	recibirF(ward);
-	frecu(ward,frecuencia, codif);
+	recibirF(mat);
+	frecu(mat,frecuencia, codif);
 	
 	do{
 		menu();
@@ -49,7 +48,7 @@ int main() {
 		
 		if(p==1)
 		{
-			mostrarM(ward,tam);
+			mostrarM(mat,tam);
 			cout<<"---------- \n";
 		}
 		else if(p==2)
@@ -82,14 +81,18 @@ int main() {
 		}
 		else if(p==6)
 		{
+			guardarF (frecuencia);
+			cout<<"hecho---------- \n";
+		}
+		else if(p==7)
+		{
 			cout<<"Que pregunta deasea? ";
 			cin>>n;
 			mostrarMo(frecuencia, codif, n);
 			cout<<"---------- \n";
 		}
-	}while(p!=7);
+	}while(p!=8);
 	
-	archi.close();
 	return 0;
 }
 void menu()
@@ -99,18 +102,18 @@ void menu()
 	cout<<"3. Ver frecuencia acumulada \n";
 	cout<<"4. Ver frecuancia relativa \n";
 	cout<<"5. Ver frecuencia relativa acumulada \n";
-	cout<<"6. Ver moda \n";
-	cout<<"7. Salir \n";
+	cout<<"6. Guardar frecuencias en archivo \n";
+	cout<<"7. Ver moda \n";
+	cout<<"8. Salir \n";
 	cout<<": ";
 }
 void recibirF (char cad[][70])
 {
-	ifstream archi("c:\\datos\\pi.txt",ios::in);
+	ifstream archi("c:\\datos\\pi4.txt",ios::in);
 	for(int i=0;i<361;i++)
 		for(int j=0;j<70;j++)
 			archi>>cad[i][j];
-
-
+	archi.close();
 }
 void mostrarM (char cad[][70],int tam)
 {
@@ -186,4 +189,15 @@ void mostrarMo (int frec[][70], char cod[], int n)
 			moda=i;
 	}
 	cout<<"La moda es: "<<cod[moda]<<endl;
+}
+void guardarF (int frec[][70])
+{
+	ofstream archo("c:\\datos\\frecuencias.txt",ios::in);
+	for(int i=0;i<18;i++)
+	{
+		for(int j=0;j<70;j++)
+			archo<<frec[i][j]<<"\t";
+		archo<<"\n";
+	}
+	archo.close();
 }
